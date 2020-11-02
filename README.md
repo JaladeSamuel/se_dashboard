@@ -1,2 +1,2 @@
 # se_dashboard
-Sensors EveryWhere projet
+Sensors EveryWhere project

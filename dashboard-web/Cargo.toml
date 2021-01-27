@@ -1,0 +1,15 @@
+[package]
+name = "dashboard-web"
+version = "0.1.0"
+authors = ["MONTMEJAT Aurelien <aurelien.montmejat-dabaux@altran.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = "0.4.6"
+
+[dependencies.rocket_contrib]
+version = "0.4.6"
+default-features = false
+features = ["handlebars_templates", "tera_templates", "serve"]

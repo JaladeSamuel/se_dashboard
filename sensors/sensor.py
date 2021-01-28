@@ -6,7 +6,6 @@ class MetaSensor():
         self.id = id
         self.type = type
     
-    @abstractmethod
     def getvalue(self):
         return 
     
@@ -23,7 +22,13 @@ class MetaSensor():
         return psutil.virtual_memory().percent
     
     def get_fan_speed(self):
-        return psutil.sensors_fan()
+        return psutil.sensors_fans()
+    
+    def get_battery_left(self):
+        return str(psutil.sensors_battery().secsleft/60).format("%d") + 'min'
+    
+    def get_is_plugged(self):
+        return psutil.sensors_battery().power_plugged
     
     def show(self):
         print("{}\t{}\tvalue:{}".format(self.id,self.type,get_value()))

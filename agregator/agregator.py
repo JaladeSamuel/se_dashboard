@@ -40,9 +40,7 @@ class AbstractAgregator:
         
     
     def send_mqtt(self):
-        # convert in Json
-        dictionaryToJson = json.dumps(self.dic)
-        print(dictionaryToJson)
+
         # send in mqtt
         # Creating client
         client = mqtt.Client(client_id='publisher-1')
@@ -50,13 +48,32 @@ class AbstractAgregator:
         # Connect to broker
         client.connect("54.38.32.137",1883)
 
-        # Publish a message with topic
-        topic = "data_plouf/"+str(self.name)
-    
-        ret = client.publish(topic,dictionaryToJson)
+        # Publish a message with top
+        for key,value in self.dic.items():
+            mot = str(key)
+            stop = 0 
+            i = 0
+            res = ""
+            while(stop==0):
+                lettre = mot[i]
+                if(lettre == " "):
+                    stop = 1 
+                else: 
+                    i += 1 
+                    res += lettre
+                
+            topic = "/data_plouf/"+str(self.name)+"/"+str(res)
 
-        # Run a loop
-        client.loop()
+            # convert in Json
+            envoieJson = json.dumps({key:value})
+
+            print(topic,envoieJson)
+
+    
+            ret = client.publish(topic,envoieJson)
+
+            # Run a loop
+            client.loop()
     
     
 
@@ -85,4 +102,3 @@ if __name__=="__main__":
     list_of_sensor.append(humidite_sensor)
 
     agregateur1 = Agregator_moyenne(list_of_sensor,"sensor_meteo")
-    

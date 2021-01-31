@@ -9,10 +9,13 @@ import json
 import paho.mqtt.client as mqtt
 
 class AbstractAgregator:
-    def __init__(self,list_of_sensor,name):
+    def __init__(self,list_of_sensor,name,latitude,longitude):
         self.list_of_sensor = list_of_sensor 
         self.name = name # name of the agregator
+        self.longitude = longitude
+        self.latitude = latitude
         self.dic = {}
+
         
     def run_agregator(self):
         while True:
@@ -40,9 +43,7 @@ class AbstractAgregator:
         
     
     def send_mqtt(self):
-        # convert in Json
-        dictionaryToJson = json.dumps(self.dic)
-        print(dictionaryToJson)
+
         # send in mqtt
         # Creating client
         client = mqtt.Client(client_id='publisher-1')
@@ -50,19 +51,44 @@ class AbstractAgregator:
         # Connect to broker
         client.connect("54.38.32.137",1883)
 
-        # Publish a message with topic
-        topic = "data_plouf/"+str(self.name)
-    
-        ret = client.publish(topic,dictionaryToJson)
+        # Publish a message
+        ret = client.publish("/data_plouf/"+str(self.name)+"/gps",str(self.latitude)+" "+str(self.longitude))
 
         # Run a loop
         client.loop()
+
+        # Publish a message
+        for key,value in self.dic.items():
+            mot = str(key)
+            stop = 0 
+            i = 0
+            res = ""
+            while(stop==0):
+                lettre = mot[i]
+                if(lettre == " "):
+                    stop = 1 
+                else: 
+                    i += 1 
+                    res += lettre
+                
+            topic = "/data_plouf/"+str(self.name)+"/"+str(res)
+
+            # convert in Json
+            envoieJson = json.dumps({key:value})
+
+            print(topic,envoieJson)
+
+    
+            ret = client.publish(topic,envoieJson)
+
+            # Run a loop
+            client.loop()
     
     
 
 class Agregator_moyenne(AbstractAgregator):
-    def __init__(self,list_of_sensor,name):
-        AbstractAgregator.__init__(self,list_of_sensor,name)
+    def __init__(self,list_of_sensor,name,latitude,longitude):
+        AbstractAgregator.__init__(self,list_of_sensor,name,latitude,longitude)
         self.run_agregator()
         
 
@@ -76,13 +102,14 @@ class Agregator_moyenne(AbstractAgregator):
 if __name__=="__main__":
     list_of_sensor = []
     print("c'est parti")
-    temperature = Sensor(123,"degre","Escalquens")
-    pression_sensor = Sensor(34,"pression","Toulouse")
-    humidite_sensor = Sensor(56,"humidite","Beziers")
+    temperature = Sensor("temp_ext","degre","Escalquens")
+    pression_sensor = Sensor("hum","pression","Toulouse")
+    humidite_sensor = Sensor("anemo","humidite","Labege")
+    cpu_sensor = Sensor("temp_cpu","cpu vitesse","St Orens")
 
     list_of_sensor.append(temperature)
     list_of_sensor.append(pression_sensor)
     list_of_sensor.append(humidite_sensor)
+    list_of_sensor.append(cpu_sensor)
 
-    agregateur1 = Agregator_moyenne(list_of_sensor,"sensor_meteo")
-    
+    agregateur1 = Agregator_moyenne(list_of_sensor,"toulouse_agregator",43.604734392639955, 1.4435127815107553)

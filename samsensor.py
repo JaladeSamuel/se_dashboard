@@ -27,5 +27,5 @@ if __name__ == '__main__':
     ret= client.publish("data/samsensor",str(msg))
 
     # Run a loop
-    client.loop()
+    client.loop_forever()
         

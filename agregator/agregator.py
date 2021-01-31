@@ -19,19 +19,32 @@ class AbstractAgregator:
         
     def run_agregator(self):
         while True:
-            # update data 
-            for sensor in self.list_of_sensor: 
-                name = str(sensor.getid()) + " - " + str(sensor.gettype()) + " - " + str(sensor.getlocalisation())
-                self.dic[name] = sensor.getvalue()
 
-            # compute 
-            self.computation()
-            # send to the server 
-            print(self.send_mqtt())
-            
+            # send in mqtt to the server
+            client = mqtt.Client(client_id='publisher-1')  # Creating client
+            client.connect("54.38.32.137",1883)  # Connect to broker
+            ret = client.publish("/data_plouf/"+str(self.name)+"/gps",str(self.latitude)+" "+str(self.longitude))
+            client.loop()
+
             for sensor in self.list_of_sensor:
+                self.dic = {}
+                self.dic["id"] = str(sensor.getid())
+                self.dic["type"] = str(sensor.gettype()) 
+                self.dic["localisation"] = str(sensor.getlocalisation())
+                self.dic["value"] = sensor.getvalue()
                 sensor.clear_buffer()
                 print("buffer clear in sensor " + str(sensor.getid()))
+                topic = "/data_plouf/"+str(self.name)+"/"+str(sensor.getid())
+
+                #compute
+                self.computation()
+
+                # convert in Json
+                dictionaryToJson = json.dumps(self.dic)
+                print(topic,dictionaryToJson)
+                ret = client.publish(topic,dictionaryToJson)
+                # Run a loop
+                client.loop()
 
             time.sleep(4) # TODO put 60 seconds
 
@@ -40,51 +53,7 @@ class AbstractAgregator:
     def computation(self):
         # traiter les données et les enregistrés dans le dic
         raise NotImplementedError("do not call an abstract class bro !")
-        
-    
-    def send_mqtt(self):
 
-        # send in mqtt
-        # Creating client
-        client = mqtt.Client(client_id='publisher-1')
-
-        # Connect to broker
-        client.connect("54.38.32.137",1883)
-
-        # Publish a message
-        ret = client.publish("/data_plouf/"+str(self.name)+"/gps",str(self.latitude)+" "+str(self.longitude))
-
-        # Run a loop
-        client.loop()
-
-        # Publish a message
-        for key,value in self.dic.items():
-            mot = str(key)
-            stop = 0 
-            i = 0
-            res = ""
-            while(stop==0):
-                lettre = mot[i]
-                if(lettre == " "):
-                    stop = 1 
-                else: 
-                    i += 1 
-                    res += lettre
-                
-            topic = "/data_plouf/"+str(self.name)+"/"+str(res)
-
-            # convert in Json
-            envoieJson = json.dumps({key:value})
-
-            print(topic,envoieJson)
-
-    
-            ret = client.publish(topic,envoieJson)
-
-            # Run a loop
-            client.loop()
-    
-    
 
 class Agregator_moyenne(AbstractAgregator):
     def __init__(self,list_of_sensor,name,latitude,longitude):
@@ -95,7 +64,8 @@ class Agregator_moyenne(AbstractAgregator):
     def computation(self):
         # traiter les données et les enregistrés dans le dic
         for key,value in self.dic.items():
-            self.dic[key] = np.mean(value)
+            if key == "value":
+                self.dic[key] = np.mean(value)
             
 
 

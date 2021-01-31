@@ -18,11 +18,12 @@ class AbstractAgregator:
 
         
     def run_agregator(self):
+        client = mqtt.Client(client_id='publisher-1')  # Creating client
+        client.connect("54.38.32.137",1883)  # Connect to broker
         while True:
 
             # send in mqtt to the server
-            client = mqtt.Client(client_id='publisher-1')  # Creating client
-            client.connect("54.38.32.137",1883)  # Connect to broker
+            
             ret = client.publish("/data_plouf/"+str(self.name)+"/gps",str(self.latitude)+" "+str(self.longitude))
             client.loop()
 

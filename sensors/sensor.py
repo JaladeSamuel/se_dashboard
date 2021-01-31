@@ -34,15 +34,9 @@ class MetaSensor():
         return psutil.sensors_battery().power_plugged
     
     def get_gps(self):
-<<<<<<< HEAD
         #g = geocoder.ip('me')
         #print(g.latlng)
         return self.latitude, self.longitude
-=======
-        g = geocoder.ip('me')
-        #print(g.latlng)
-        return g.latlng
->>>>>>> 4358d493f23bbdbe17706c68e7dff676356dbc6f
     
     def show(self):
         print("{}\t{}\tvalue:{}".format(self.id, self.type, self.get_value()))

@@ -13,7 +13,7 @@ class SamSensor(MetaSensor):
     
 
 if __name__ == '__main__':
-    rasp = samsensor(0,'float')
+    rasp = SamSensor(0,'float')
     # Creating client
     client = mqtt.Client(client_id='samsensor')
 

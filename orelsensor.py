@@ -1,5 +1,6 @@
 from sensors.sensor import MetaSensor
 import numpy as np
+import paho.mqtt.client as mqtt
 
 class OrelSensor(MetaSensor):
     _metaclass__ = MetaSensor
@@ -10,4 +11,23 @@ class OrelSensor(MetaSensor):
     def getvalue(self):
         return self.get_memory_usage()
     
+    def getimg(self):
         
+    
+
+if __name__ == '__main__':
+    orelsensor = OrelSensor(0,'json')
+    # Creating client
+    client = mqtt.Client(client_id='orelsensor')
+
+    # Connect to broker
+    client.connect("54.38.32.137",1883)
+    
+    # Get value sensor
+    msg = orelsensor.getimg()
+
+    # Publish a message with topic
+    ret= client.publish("data/orelsensor",str(msg))
+
+    # Run a loop
+    client.loop()

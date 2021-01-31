@@ -93,12 +93,14 @@ class Agregator_moyenne(AbstractAgregator):
 if __name__=="__main__":
     list_of_sensor = []
     print("c'est parti")
-    temperature = Sensor(123,"degre","Escalquens")
-    pression_sensor = Sensor(34,"pression","Toulouse")
-    humidite_sensor = Sensor(56,"humidite","Beziers")
+    temperature = Sensor("temp_ext","degre","Escalquens")
+    pression_sensor = Sensor("hum","pression","Toulouse")
+    humidite_sensor = Sensor("anemo","humidite","Labege")
+    cpu_sensor = Sensor("temp_cpu","cpu vitesse","St Orens")
 
     list_of_sensor.append(temperature)
     list_of_sensor.append(pression_sensor)
     list_of_sensor.append(humidite_sensor)
+    list_of_sensor.append(cpu_sensor)
 
-    agregateur1 = Agregator_moyenne(list_of_sensor,"sensor_meteo")
+    agregateur1 = Agregator_moyenne(list_of_sensor,"toulouse_agregator")

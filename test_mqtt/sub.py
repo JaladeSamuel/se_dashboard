@@ -15,7 +15,7 @@ client.on_message = process_message
 client.connect("54.38.32.137",1883,60)
 
 # Subscriber to topic
-client.subscribe("/data_plouf/sensor_meteo/123") # nom de l'agregateur
+client.subscribe("/data_plouf/toulouse_agregator/temp_cpu") # nom de l'agregateur
 
 # Run loop
 client.loop_forever()

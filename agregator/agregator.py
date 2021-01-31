@@ -9,10 +9,13 @@ import json
 import paho.mqtt.client as mqtt
 
 class AbstractAgregator:
-    def __init__(self,list_of_sensor,name):
+    def __init__(self,list_of_sensor,name,latitude,longitude):
         self.list_of_sensor = list_of_sensor 
         self.name = name # name of the agregator
+        self.longitude = longitude
+        self.latitude = latitude
         self.dic = {}
+
         
     def run_agregator(self):
         while True:
@@ -48,7 +51,13 @@ class AbstractAgregator:
         # Connect to broker
         client.connect("54.38.32.137",1883)
 
-        # Publish a message with top
+        # Publish a message
+        ret = client.publish("/data_plouf/"+str(self.name)+"/gps",str(self.latitude)+" "+str(self.longitude))
+
+        # Run a loop
+        client.loop()
+
+        # Publish a message
         for key,value in self.dic.items():
             mot = str(key)
             stop = 0 
@@ -78,8 +87,8 @@ class AbstractAgregator:
     
 
 class Agregator_moyenne(AbstractAgregator):
-    def __init__(self,list_of_sensor,name):
-        AbstractAgregator.__init__(self,list_of_sensor,name)
+    def __init__(self,list_of_sensor,name,latitude,longitude):
+        AbstractAgregator.__init__(self,list_of_sensor,name,latitude,longitude)
         self.run_agregator()
         
 
@@ -103,4 +112,4 @@ if __name__=="__main__":
     list_of_sensor.append(humidite_sensor)
     list_of_sensor.append(cpu_sensor)
 
-    agregateur1 = Agregator_moyenne(list_of_sensor,"toulouse_agregator")
+    agregateur1 = Agregator_moyenne(list_of_sensor,"toulouse_agregator",43.604734392639955, 1.4435127815107553)

@@ -1,19 +1,21 @@
 import psutil
-import geocoder
+#import geocoder
 
 class MetaSensor():
     
-    def __init__(self, id,type):
+    def __init__(self, id, type, latitude, longitude):
         self.id = id
         self.type = type
+        self.latitude = latitude
+        self.longitude = longitude
     
-    def getvalue(self):
+    def get_value(self):
         return 
     
-    def gettype(self):
+    def get_type(self):
         return self.type
     
-    def getid(self):
+    def get_id(self):
         return self.id
     
     def get_cpu_temp(self):
@@ -32,9 +34,9 @@ class MetaSensor():
         return psutil.sensors_battery().power_plugged
     
     def get_gps(self):
-        g = geocoder.ip('me')
-        print(g.latlng)
-        return g.latlng
+        #g = geocoder.ip('me')
+        #print(g.latlng)
+        return self.latitude, self.longitude
     
     def show(self):
-        print("{}\t{}\tvalue:{}".format(self.id,self.type,get_value()))
+        print("{}\t{}\tvalue:{}".format(self.id, self.type, self.get_value()))

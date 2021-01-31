@@ -2,6 +2,8 @@ import os
 from sensors.sensor import MetaSensor
 import numpy as np
 import paho.mqtt.client as mqtt
+import json
+import base64
 
 class OrelSensor(MetaSensor):
     _metaclass__ = MetaSensor
@@ -13,7 +15,13 @@ class OrelSensor(MetaSensor):
         return self.get_memory_usage()
     
     def getimg(self):
-        os.system("node svgtojson.js image.svg")
+        data = {}
+        with open('some.gif', mode='rb') as file:
+            img = file.read()
+        data['img'] = base64.encodebytes(img).decode('utf-8')
+
+        #print(json.dumps(data))
+        return json.dumps(data)
         
     
 
@@ -32,4 +40,4 @@ if __name__ == '__main__':
     ret= client.publish("data/orelsensor",msg)
 
     # Run a loop
-    client.loop()
+    client.loop_forever()

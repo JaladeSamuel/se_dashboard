@@ -9,6 +9,8 @@ Make sure you have Rust installed in nightly:
 
 `rustup default nightly`
 
+Run the server:
+
 `cd dashboard-web`
 
 `cargo run`

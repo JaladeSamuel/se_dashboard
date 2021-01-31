@@ -65,17 +65,17 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="agregator1.html">Agregator 1</a>
-                        <a class="collapse-item" href="agregator2.html">Agregator 2</a>
-                        <a class="collapse-item" href="agregator3.html">Agregator 3</a>
-                        <a class="collapse-item active" href="agregator4.html">Agregator 4</a>
-                        <a class="collapse-item" href="agregator5.html">Agregator 5</a>
+                        <a class="collapse-item" href="toulouse">Toulouse</a>
+                        <a class="collapse-item" href="new_york">New York</a>
+                        <a class="collapse-item" href="london">London</a>
+                        <a class="collapse-item" href="moscou">Moscou</a>
+                        <a class="collapse-item" href="rio">Rio de Janero</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Map Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="map.html">
                     <i class="fas fa-fw fa-map-pin"></i>
                     <span>Map</span></a>
@@ -83,9 +83,6 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -143,96 +140,78 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard Agregator 4</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Agregators' location</h1>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                CPU Temperature </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">48°C</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-microchip fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Air Temperature </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">24°C</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Humidity
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">84 %</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-tint fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Wind
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">18 Km/h</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-wind fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
 
                 </div>
                 <!-- /.container-fluid -->
+                <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+        <style type="text/css">
+            #map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+                height:700px;
+            }
+        </style>
+        <title>Carte</title>
+    </head>
+    <body>
+        <div id="map">
+	    <!-- Ici s'affichera la carte -->
+	</div>
+
+        <!-- Fichiers Javascript -->
+        <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+	<script type="text/javascript">
+            // On initialise la latitude et la longitude de Paris (centre de la carte)
+            var lat = 48.852969;
+            var lon = 2.349903;
+            var macarte = null;
+            var agregators = {
+                "Agregator 1" : { "lat": 43.604734392639955, "lon":1.4435127815107553},
+                "Agregator 2" : { "lat": 40.74111864520855, "lon":-73.98655429420452},
+                "Agregator 3" : { "lat": 51.501404663120496, "lon":-0.1228799390562631},
+                "Agregator 4" : { "lat": 55.75231026249764, "lon":37.61615909917444},
+                "Agregator 5" : { "lat": -22.911697566737775, "lon":-43.23021114084715}
+            };
+            var markerTable = [];
+
+            // Fonction d'initialisation de la carte
+            function initMap() {
+                // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+                macarte = L.map('map').setView([lat, lon], 11);
+                // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+                L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                    // Il est toujours bien de laisser le lien vers la source des données
+                    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                    minZoom: 1,
+                    maxZoom: 20
+                }).addTo(macarte);
+                
+                //display each marker
+                for(a in agregators){
+                    var marqueur1 = L.marker([agregators[a].lat,agregators[a].lon]).addTo(macarte);
+                    marqueur1.bindPopup("<p>"+ a +"</p>");
+                    markerTable.push(marqueur1);
+                }
+                //display all the marker at once
+                var group = new L.featureGroup(markerTable);
+                macarte.fitBounds(group.getBounds());
+            }
+            window.onload = function(){
+		// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+		initMap(); 
+            };
+        </script>
+    </body>
+</html>
 
             </div>
             <!-- End of Main Content -->

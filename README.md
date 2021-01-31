@@ -20,6 +20,7 @@ Run the server:
 Make sure you have node js installed (to send image in json format)
 
 Install nodejs packages
+Install : pip3 install geocoder
 
 Simply run the python script "python <nameof the sensor>.py"
 

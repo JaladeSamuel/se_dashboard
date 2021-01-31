@@ -15,6 +15,7 @@ class SamSensor(MetaSensor):
         data['info'] = 'cpu_temp'
         data['data'] = self.get_cpu_temp()
         data['type'] = 'float'
+        data['gps'] = self.get_gps()
         
         return json.dumps(data)
     

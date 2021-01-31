@@ -33,7 +33,7 @@ class MetaSensor():
     
     def get_gps(self):
         g = geocoder.ip('me')
-        print(g.latlng)
+        #print(g.latlng)
         return g.latlng
     
     def show(self):

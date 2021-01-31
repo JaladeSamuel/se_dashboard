@@ -14,3 +14,12 @@ Run the server:
 `cd dashboard-web`
 
 `cargo run`
+
+# To run a sensor 
+
+Make sure you have node js installed (to send image in json format)
+
+Install nodejs packages
+
+Simply run the python script "python <nameof the sensor>.py"
+

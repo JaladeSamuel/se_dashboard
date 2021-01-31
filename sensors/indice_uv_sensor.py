@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 import random
 import time
 
-class temp_cpu_sensor(MetaSensor):
+class indice_uv_sensor(MetaSensor):
     
     __metaclass__ = MetaSensor
     def __init__(self, id, type):
@@ -14,17 +14,17 @@ class temp_cpu_sensor(MetaSensor):
          
 
 if __name__ == '__main__':
-    rasp_anemo = temp_cpu_sensor(3,'uv')
+    rasp_indice_uv = indice_uv_sensor("toulouse","uv")
     # Creating client
-    client = mqtt.Client(client_id='uv_sensor')
+    client = mqtt.Client(client_id="uv_sensor")
     # Connect to broker
     client.connect("localhost")
     
     while(True):
         # Get value sensor
-        msg = rasp_anemo.get_value()
+        msg = rasp_indice_uv.get_value()
         # Publish a temperature value
-        ret = client.publish("/" + str(rasp_anemo.id) + "/indice_uv_sensor", msg)
+        ret = client.publish("/" + rasp_indice_uv.id + "/indice_uv_sensor", msg)
         # Run a loop
         client.loop()
         time.sleep(5)

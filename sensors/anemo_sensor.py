@@ -14,9 +14,9 @@ class anemo_sensor(MetaSensor):
          
 
 if __name__ == '__main__':
-    rasp_anemo = anemo_sensor(2,'km/h')
+    rasp_anemo = anemo_sensor("toulouse",'km/h')
     # Creating client
-    client = mqtt.Client(client_id='anemo_sensor')
+    client = mqtt.Client(client_id="anemo_sensor")
     # Connect to broker
     client.connect("localhost")
     

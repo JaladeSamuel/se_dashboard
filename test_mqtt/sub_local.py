@@ -15,7 +15,7 @@ client.on_message = on_message
 client.connect("localhost")
 
 # Subscriber to topic
-client.subscribe("/0/temp_ext_sensor") # nom du capteur
+client.subscribe("/toulouse/temp_ext_sensor") # nom du capteur
 
 # Run loop
 client.loop_forever()

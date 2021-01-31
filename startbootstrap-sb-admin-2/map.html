@@ -177,6 +177,15 @@
             var lat = 48.852969;
             var lon = 2.349903;
             var macarte = null;
+            var agregators = {
+                "Agregator 1" : { "lat": 43.604734392639955, "lon":1.4435127815107553},
+                "Agregator 2" : { "lat": 40.74111864520855, "lon":-73.98655429420452},
+                "Agregator 3" : { "lat": 51.501404663120496, "lon":-0.1228799390562631},
+                "Agregator 4" : { "lat": 55.75231026249764, "lon":37.61615909917444},
+                "Agregator 5" : { "lat": -22.911697566737775, "lon":-43.23021114084715}
+            };
+            var markerTable = [];
+
             // Fonction d'initialisation de la carte
             function initMap() {
                 // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
@@ -188,6 +197,16 @@
                     minZoom: 1,
                     maxZoom: 20
                 }).addTo(macarte);
+                
+                //display each marker
+                for(a in agregators){
+                    var marqueur1 = L.marker([agregators[a].lat,agregators[a].lon]).addTo(macarte);
+                    marqueur1.bindPopup("<p>"+ a +"</p>");
+                    markerTable.push(marqueur1);
+                }
+                //display all the marker at once
+                var group = new L.featureGroup(markerTable);
+                macarte.fitBounds(group.getBounds());
             }
             window.onload = function(){
 		// Fonction d'initialisation qui s'exécute lorsque le DOM est chargé

@@ -1,6 +1,7 @@
 from sensors.sensor import MetaSensor
 import numpy as np
 import paho.mqtt.client as mqtt
+import time
 
 class SamSensor(MetaSensor):
     
@@ -9,7 +10,12 @@ class SamSensor(MetaSensor):
         super().__init__(id,name)
     
     def getvalue(self):
-        return np.random.random_sample()
+        data ={}
+        data['info'] = 'cpu_temp'
+        data['data'] = self.get_cpu_temp()
+        data['type'] = 'float'
+        
+        return json.dumps(data)
     
 
 if __name__ == '__main__':
@@ -20,12 +26,16 @@ if __name__ == '__main__':
     # Connect to broker
     client.connect("54.38.32.137",1883)
     
-    # Get value sensor
-    msg = rasp.getvalue()
+    while(True):
+        # Get value sensor
+        msg = rasp.getvalue()
 
-    # Publish a message with topic
-    ret= client.publish("data/samsensor",str(msg))
+        # Publish a message with topic
+        ret= client.publish("data/samsensor",msg)
 
-    # Run a loop
-    client.loop_forever()
+        # Run a loop
+        client.loop()
+        
+        time.sleep(5)
+        
         

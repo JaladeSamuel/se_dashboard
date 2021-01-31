@@ -1,30 +1,30 @@
 from sensor import MetaSensor
 import paho.mqtt.client as mqtt
-import numpy as np
+import random
 import time
 
-class temp_ext_sensor(MetaSensor):
+class anemo_sensor(MetaSensor):
     
     __metaclass__ = MetaSensor
     def __init__(self, id, type):
         super().__init__(id, type)
     
     def get_value(self):
-        temperature_ext = 19.5 + np.random.rand()
-        return temperature_ext
+        return random.randint(30, 40)
+         
 
 if __name__ == '__main__':
-    rasp_temp_ext = temp_ext_sensor(0,'degree')
+    rasp_anemo = anemo_sensor(2,'km/h')
     # Creating client
-    client = mqtt.Client(client_id='temp_ext_sensor')
+    client = mqtt.Client(client_id='anemo_sensor')
     # Connect to broker
     client.connect("localhost")
     
     while(True):
         # Get value sensor
-        msg = rasp_temp_ext.get_value()
+        msg = rasp_anemo.get_value()
         # Publish a temperature value
-        ret = client.publish("/" + str(rasp_temp_ext.id) + "/temp_ext_sensor", msg)
+        ret = client.publish("/" + str(rasp_anemo.id) + "/anemo_sensor", msg)
         # Run a loop
         client.loop()
         time.sleep(5)

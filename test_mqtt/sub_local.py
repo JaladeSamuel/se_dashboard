@@ -16,7 +16,6 @@ client.connect("localhost")
 
 # Subscriber to topic
 client.subscribe("/0/temp_ext_sensor") # nom du capteur
-client.subscribe("/0/gps") # nom du capteur
 
 # Run loop
 client.loop_forever()

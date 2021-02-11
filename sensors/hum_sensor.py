@@ -27,6 +27,6 @@ if __name__ == '__main__':
         ret = client.publish("/" + str(rasp_hum.id) + "/hum_sensor", msg)
         # Run a loop
         client.loop()
-        time.sleep(5)
+        time.sleep(1)
         
         

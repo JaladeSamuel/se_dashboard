@@ -27,6 +27,6 @@ if __name__ == '__main__':
         ret = client.publish("/" + rasp_indice_uv.id + "/indice_uv_sensor", msg)
         # Run a loop
         client.loop()
-        time.sleep(5)
+        time.sleep(1)
         
         

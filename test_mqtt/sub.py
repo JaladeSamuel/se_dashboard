@@ -12,10 +12,14 @@ client = mqtt.Client(client_id="subscriber-1")
 client.on_message = process_message
 
 # Connect to broker
-client.connect("54.38.32.137",1883,60)
+client.connect("54.38.32.137",1883)
 
 # Subscriber to topic
-client.subscribe("/data_plouf/toulouse_agregator/gps") # nom de l'agregateur
+client.subscribe("/data_plouf/toulouse_agregator/temp_ext")
+client.subscribe("/data_plouf/toulouse_agregator/hum")
+client.subscribe("/data_plouf/toulouse_agregator/anemo")
+client.subscribe("/data_plouf/toulouse_agregator/indice_uv")
+client.subscribe("/data_plouf/toulouse_agregator/gps")  
 
 # Run loop
 client.loop_forever()

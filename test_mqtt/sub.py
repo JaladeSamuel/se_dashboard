@@ -6,7 +6,7 @@ def process_message(client, userdata, message):
 
 
 # Create client
-client = mqtt.Client(client_id="subscriber-1")
+client = mqtt.Client()
 
 # Assign callback function
 client.on_message = process_message

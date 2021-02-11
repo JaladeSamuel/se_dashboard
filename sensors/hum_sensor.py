@@ -16,7 +16,7 @@ class hum_sensor(MetaSensor):
 if __name__ == '__main__':
     rasp_hum = hum_sensor("toulouse","percentage")
     # Creating client
-    client = mqtt.Client(client_id="hum_sensor")
+    client = mqtt.Client()
     # Connect to broker
     client.connect("localhost")
     

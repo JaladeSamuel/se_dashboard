@@ -16,7 +16,7 @@ class temp_ext_sensor(MetaSensor):
 if __name__ == '__main__':
     rasp_temp_ext = temp_ext_sensor("toulouse","degree")
     # Creating client
-    client = mqtt.Client(client_id="temp_ext_sensor")
+    client = mqtt.Client()
     # Connect to broker
     client.connect("localhost")
     

@@ -16,7 +16,7 @@ class indice_uv_sensor(MetaSensor):
 if __name__ == '__main__':
     rasp_indice_uv = indice_uv_sensor("toulouse","uv")
     # Creating client
-    client = mqtt.Client(client_id="uv_sensor")
+    client = mqtt.Client()
     # Connect to broker
     client.connect("localhost")
     

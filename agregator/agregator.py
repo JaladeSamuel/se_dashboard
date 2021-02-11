@@ -33,10 +33,10 @@ class AbstractAgregator:
         
     def run_agregator(self):
         # MQTT Client 
-        client = mqtt.Client(client_id="publisher-1") 
+        client = mqtt.Client() 
         client.connect("54.38.32.137",1883) 
         # Client mqtt local, récupération des sensors
-        client_local = mqtt.Client(client_id="sensor_receiver")
+        client_local = mqtt.Client()
         client_local.connect("localhost")
         client_local.on_message = self.on_message_local_client
         client_local.subscribe("/" + str(self.city) + "/temp_ext_sensor")

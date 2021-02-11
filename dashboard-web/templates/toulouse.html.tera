@@ -31,10 +31,10 @@
     <!-- MQTT sensor messages handler -->
     <script>
         topics = {
-            "/data_plouf/toulouse_agregator/temp_ext": "temp_ext", 
+            "/data_plouf/toulouse_agregator/temp_ext": "temp_ext",
+            "/data_plouf/toulouse_agregator/indice_uv": "indice_uv",
             "/data_plouf/toulouse_agregator/hum": "hum",
             "/data_plouf/toulouse_agregator/anemo": "anemo",
-            "/data_plouf/toulouse_agregator/temp_cpu": "temp_cpu",
         };
         openMQTTConnection(topics);
     </script>
@@ -168,24 +168,6 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                CPU Temperature </div>
-                                            <div id="temp_cpu" class="h5 mb-0 font-weight-bold text-gray-800">48°C</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-microchip fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Air temperature </div>
                                             <div id="temp_ext" class="h5 mb-0 font-weight-bold text-gray-800">24°C</div>
                                         </div>
@@ -236,7 +218,94 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                UV Index</div>
+                                            <div id="indice_uv" class="h5 mb-0 font-weight-bold text-gray-800">18 Km/h</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-wind fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Air Temperature</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="airTempChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Humidity</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="humidityChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">Wind</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="windChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Area Chart -->
+                    <div class="col">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">UV Index</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="card-body">
+                                <div class="chart-area">
+                                    <canvas id="uvIndexChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
                 <!-- /.container-fluid -->

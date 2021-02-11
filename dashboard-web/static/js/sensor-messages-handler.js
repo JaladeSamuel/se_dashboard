@@ -28,12 +28,12 @@ function onConnect() {
 }
 
 function onMessageArrived(message) {
+    console.log(message.payloadString);
+
     var element = document.getElementById(topics[message.destinationName]);
     var values = JSON.parse(message.payloadString);
 
-    console.log(values);
-
-    if (values["type"] == "degre") {
+    if (values["type"] == "degree") {
         element.innerText = (Math.round((values["value"] + Number.EPSILON) * 100) / 100).toString() + " °C";
     } else if (values["type"] == "km/h") {
         element.innerText = (Math.round((values["value"] + Number.EPSILON) * 100) / 100).toString() + " km/h";
@@ -42,4 +42,7 @@ function onMessageArrived(message) {
     } else {
         element.innerText = Math.round((values["value"] + Number.EPSILON) * 100) / 100;
     }
+
+    var date = new Date();
+    addData(topics[message.destinationName], '', values["value"])
 }

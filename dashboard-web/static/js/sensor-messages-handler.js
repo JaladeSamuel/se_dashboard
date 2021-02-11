@@ -9,7 +9,7 @@ var topics = {}
 function openMQTTConnection(topics) {
     console.log("Connecting to the brooker");
     topics = topics;
-    mqtt = new Paho.MQTT.Client(host, port);
+    mqtt = new Paho.MQTT.Client(host, port, "js-" + Math.random());
 
     var options = {
         timeout: 3,

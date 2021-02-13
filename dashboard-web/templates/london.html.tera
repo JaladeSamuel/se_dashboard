@@ -342,9 +342,9 @@
     <script>
         topics = {
             "/data_plouf/london_agregator/temp_ext": "temp_ext", 
+            "/data_plouf/london_agregator/indice_uv": "indice_uv",
             "/data_plouf/london_agregator/hum": "hum",
             "/data_plouf/london_agregator/anemo": "anemo",
-            "/data_plouf/london_agregator/temp_cpu": "temp_cpu",
         };
         openMQTTConnection(topics, 'london');
     </script>

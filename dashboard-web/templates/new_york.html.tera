@@ -343,10 +343,10 @@
     <!-- MQTT sensor messages handler -->
     <script>
         topics = {
-            "/data_plouf/newyork_agregator/temp_ext": "temp_ext", 
+            "/data_plouf/newyork_agregator/temp_ext": "temp_ext",
+            "/data_plouf/newyork_agregator/indice_uv": "indice_uv",
             "/data_plouf/newyork_agregator/hum": "hum",
             "/data_plouf/newyork_agregator/anemo": "anemo",
-            "/data_plouf/newyork_agregator/temp_cpu": "temp_cpu",
         };
         openMQTTConnection(topics, 'new_york');
     </script>

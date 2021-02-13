@@ -341,10 +341,10 @@
     <!-- MQTT sensor messages handler -->
     <script>
         topics = {
-            "/data_plouf/moscou_agregator/temp_ext": "temp_ext", 
+            "/data_plouf/moscou_agregator/temp_ext": "temp_ext",
+            "/data_plouf/moscou_agregator/indice_uv": "indice_uv",
             "/data_plouf/moscou_agregator/hum": "hum",
             "/data_plouf/moscou_agregator/anemo": "anemo",
-            "/data_plouf/moscou_agregator/temp_cpu": "temp_cpu",
         };
         openMQTTConnection(topics, 'moscou');
     </script>

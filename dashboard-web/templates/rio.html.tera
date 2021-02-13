@@ -344,9 +344,9 @@
     <script>
         topics = {
             "/data_plouf/rio_agregator/temp_ext": "temp_ext", 
+            "/data_plouf/rio_agregator/indice_uv": "indice_uv",
             "/data_plouf/rio_agregator/hum": "hum",
             "/data_plouf/rio_agregator/anemo": "anemo",
-            "/data_plouf/rio_agregator/temp_cpu": "temp_cpu",
         };
         openMQTTConnection(topics, 'rio');
     </script>

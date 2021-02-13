@@ -3,14 +3,17 @@ Sensors EveryWhere project
 
 # Run the Rust web server
 
-Make sure you have Rust installed in nightly:
+## Dependencies 
+
+- Make sure you have Rust installed in nightly:
 
 `curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh` or download the Windows installer.
 
-`rustup default nightly`
+ `rustup default nightly`
 
   - Mosquitto (Broker MQTT) : 
     ```sudo apt-get install mosquitto```
+    
     ```pip3 install paho-mqtt```
 
 Run the server:

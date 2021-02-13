@@ -16,7 +16,7 @@ Sensors EveryWhere project
     
     ```pip3 install paho-mqtt```
 
-Run the server:
+# Run the server:
 
 `cd dashboard-web`
 

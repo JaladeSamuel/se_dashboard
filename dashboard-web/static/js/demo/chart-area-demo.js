@@ -358,11 +358,20 @@ var uvIndexChart = new Chart(ctx, {
   }
 });
 
-charts = {
-  'temp_ext': airTempChart,
-  'hum': myLineChart,
-  'anemo': windChart,
-  'indice_uv': uvIndexChart,
+charts = {}
+
+function setCharts(agregatorName) {
+  temp_ext_id = agregatorName + '-temp_ext';
+  hum_id = agregatorName + '-hum';
+  anemo_id = agregatorName + '-anemo';
+  indiceUv_id = agregatorName + '-indice_uv';
+
+  charts = {
+    temp_ext_id: airTempChart,
+    hum_id: myLineChart,
+    anemo_id: windChart,
+    indiceUv_id: uvIndexChart,
+  }
 }
 
 function addData(chart, label, data) {

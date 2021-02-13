@@ -20,24 +20,9 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- Paho library for handling MQTT messages -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/js/sensor-messages-handler.js"></script>
-
 </head>
 
 <body id="page-top">
-
-    <!-- MQTT sensor messages handler -->
-    <script>
-        topics = {
-            "/data_plouf/toulouse_agregator/temp_ext": "temp_ext",
-            "/data_plouf/toulouse_agregator/indice_uv": "indice_uv",
-            "/data_plouf/toulouse_agregator/hum": "hum",
-            "/data_plouf/toulouse_agregator/anemo": "anemo",
-        };
-        openMQTTConnection(topics);
-    </script>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -169,7 +154,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Air temperature </div>
-                                            <div id="temp_ext" class="h5 mb-0 font-weight-bold text-gray-800">24°C</div>
+                                            <div id="temp_ext" class="h5 mb-0 font-weight-bold text-gray-800">- °C</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-thermometer-half fa-2x text-gray-300"></i>
@@ -189,7 +174,7 @@
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div id="hum" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">84 %</div>
+                                                    <div id="hum" class="h5 mb-0 mr-3 font-weight-bold text-gray-800">- %</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -209,7 +194,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Wind</div>
-                                            <div id="anemo" class="h5 mb-0 font-weight-bold text-gray-800">18 Km/h</div>
+                                            <div id="anemo" class="h5 mb-0 font-weight-bold text-gray-800">- Km/h</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-wind fa-2x text-gray-300"></i>
@@ -227,7 +212,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 UV Index</div>
-                                            <div id="indice_uv" class="h5 mb-0 font-weight-bold text-gray-800">18 Km/h</div>
+                                            <div id="indice_uv" class="h5 mb-0 font-weight-bold text-gray-800">-</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-wind fa-2x text-gray-300"></i>
@@ -249,7 +234,7 @@
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="airTempChart"></canvas>
+                                    <canvas id="toulouse-airTempChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -266,7 +251,7 @@
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="humidityChart"></canvas>
+                                    <canvas id="toulouse-humidityChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -283,7 +268,7 @@
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="windChart"></canvas>
+                                    <canvas id="toulouse-windChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -300,12 +285,11 @@
                             <!-- Card Body -->
                             <div class="card-body">
                                 <div class="chart-area">
-                                    <canvas id="uvIndexChart"></canvas>
+                                    <canvas id="toulouse-uvIndexChart"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
-
 
                 </div>
                 <!-- /.container-fluid -->
@@ -317,7 +301,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Sensors EveryWhere Project</span>
                     </div>
                 </div>
             </footer>
@@ -344,12 +328,27 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
+    <!-- Paho library for handling MQTT messages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/sensor-messages-handler.js"></script>
+
     <!-- Page level plugins -->
     <script src="vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
+
+    <!-- MQTT sensor messages handler -->
+    <script>
+        topics = {
+            "/data_plouf/toulouse_agregator/temp_ext": "temp_ext",
+            "/data_plouf/toulouse_agregator/indice_uv": "indice_uv",
+            "/data_plouf/toulouse_agregator/hum": "hum",
+            "/data_plouf/toulouse_agregator/anemo": "anemo",
+        };
+
+        openMQTTConnection(topics, 'toulouse');
+    </script>
 
 </body>
 

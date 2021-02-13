@@ -5,10 +5,12 @@ var mqtt;
 var host = "54.38.32.137";
 var port = 9001;
 var topics = {}
+var agregatorName;
 
-function openMQTTConnection(topics) {
+function openMQTTConnection(topics, agregatorName) {
     console.log("Connecting to the brooker");
     topics = topics;
+    agregatorName = agregatorName;
     mqtt = new Paho.MQTT.Client(host, port, "js-" + Math.random());
 
     var options = {
@@ -18,6 +20,8 @@ function openMQTTConnection(topics) {
 
     mqtt.connect(options);
     mqtt.onMessageArrived = onMessageArrived;
+
+    setCharts(agregatorName);
 }
 
 function onConnect() {
@@ -43,6 +47,5 @@ function onMessageArrived(message) {
         element.innerText = Math.round((values["value"] + Number.EPSILON) * 100) / 100;
     }
 
-    var date = new Date();
-    addData(topics[message.destinationName], '', values["value"])
+    addData(agregatorName + '/' + topics[message.destinationName], '', values["value"])
 }

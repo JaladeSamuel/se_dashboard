@@ -22,12 +22,14 @@ Sensors EveryWhere project
 
 `cargo run`
 
-# To run a sensor 
+# Run all sensors and agregators
 
-Make sure you have node js installed (to send image in json format)
+Run all simulated local sensors with :
+`./start_all_sensors.sh`
 
-Install nodejs packages
-Install : pip3 install geocoder
+Run all agregators with (gnome) : 
+`./start_all_agregators.sh`
+You can also run the agregators one by one.
 
-Simply run the python script "python <name of the sensor>.py"
-
+The python sensors scripts are executed in background, you can stop them with :
+`sudo killall python3`

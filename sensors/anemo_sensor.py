@@ -2,7 +2,7 @@ from sensor import MetaSensor
 import paho.mqtt.client as mqtt
 import random
 import time
-
+import sys
 class anemo_sensor(MetaSensor):
     
     __metaclass__ = MetaSensor
@@ -14,7 +14,9 @@ class anemo_sensor(MetaSensor):
          
 
 if __name__ == '__main__':
-    rasp_anemo = anemo_sensor("toulouse",'km/h')
+    if(len(sys.argv) < 2):
+        print("Error missing arg : anemo_sensor.py [city_name]")
+    rasp_anemo = anemo_sensor(str(sys.argv[1]),'km/h')
     # Creating client
     client = mqtt.Client()
     # Connect to broker

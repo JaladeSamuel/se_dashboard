@@ -2,6 +2,7 @@ from sensor import MetaSensor
 import paho.mqtt.client as mqtt
 import random
 import time
+import sys
 
 class indice_uv_sensor(MetaSensor):
     
@@ -14,7 +15,9 @@ class indice_uv_sensor(MetaSensor):
          
 
 if __name__ == '__main__':
-    rasp_indice_uv = indice_uv_sensor("toulouse","uv")
+    if(len(sys.argv) < 2):
+        print("Error missing arg : indice_uv_sensor.py [city_name]")
+    rasp_indice_uv = indice_uv_sensor(str(sys.argv[1]),"uv")
     # Creating client
     client = mqtt.Client()
     # Connect to broker

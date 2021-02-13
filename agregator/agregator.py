@@ -55,18 +55,22 @@ class AbstractAgregator:
             time.sleep(0.1)
             if(self.local_message_received.get("temp_ext_sensor")):
                 client.publish("/data_plouf/" + str(self.name) + "/temp_ext", self.json_message.get("temp_ext"))
+                print("Publishing temp_ext")
                 self.local_message_received["temp_ext_sensor"] = False
             
             if(self.local_message_received.get("hum_sensor")):
                 client.publish("/data_plouf/" + str(self.name) + "/hum", self.json_message.get("hum"))
+                print("Publishing hum")
                 self.local_message_received["hum_sensor"] = False
             
             if(self.local_message_received.get("anemo_sensor")):
                 client.publish("/data_plouf/" + str(self.name) + "/anemo", self.json_message.get("anemo"))
+                print("Publishing anemo")
                 self.local_message_received["anemo_sensor"] = False
             
             if(self.local_message_received.get("indice_uv_sensor")):
                 client.publish("/data_plouf/" + str(self.name) + "/indice_uv", self.json_message.get("indice_uv"))
+                print("Publishing indice_uv")
                 self.local_message_received["indice_uv_sensor"] = False
             
             #Sending GPS each 10 seconds
@@ -141,9 +145,3 @@ class Agregator_moyenne(AbstractAgregator):
         for key,value in self.dic.items():
             if key == "value":
                 self.dic[key] = np.mean(value)
-            
-
-
-if __name__=="__main__":
-    print("Starting agregator")
-    agregateur1 = Agregator_moyenne("toulouse_agregator", "toulouse", 43.604734392639955, 1.4435127815107553, 2)

@@ -2,6 +2,7 @@ from sensor import MetaSensor
 import paho.mqtt.client as mqtt
 import numpy as np
 import time
+import sys
 
 class temp_ext_sensor(MetaSensor):
     
@@ -14,7 +15,10 @@ class temp_ext_sensor(MetaSensor):
         return temperature_ext
 
 if __name__ == '__main__':
-    rasp_temp_ext = temp_ext_sensor("toulouse","degree")
+    if(len(sys.argv) < 2):
+        print("Error missing arg : temp_ext_sensor.py [city_name]")
+    rasp_temp_ext = temp_ext_sensor(str(sys.argv[1]),"degree")
+
     # Creating client
     client = mqtt.Client()
     # Connect to broker

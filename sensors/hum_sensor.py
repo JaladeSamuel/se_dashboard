@@ -2,6 +2,7 @@ from sensor import MetaSensor
 import paho.mqtt.client as mqtt
 import random
 import time
+import sys
 
 class hum_sensor(MetaSensor):
     
@@ -14,7 +15,9 @@ class hum_sensor(MetaSensor):
          
 
 if __name__ == '__main__':
-    rasp_hum = hum_sensor("toulouse","percentage")
+    if(len(sys.argv) < 2):
+        print("Error missing arg : hum_sensor.py [city_name]")
+    rasp_hum = hum_sensor(str(sys.argv[1]),"percentage")
     # Creating client
     client = mqtt.Client()
     # Connect to broker

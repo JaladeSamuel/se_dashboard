@@ -1,6 +1,6 @@
 # Sensors EveryWhere 🚀
 
-Sensors EveryWhere project.
+Web server based dashboard to view in real time the values of simulated sensors around the world.
 
 ![](doc/SEW.gif)
 
@@ -14,7 +14,7 @@ Sensors EveryWhere project.
 
 `rustup default nightly`
 
-- Mosquitto and MQTT library
+- Mosquitto and MQTT library:
  
 `sudo apt-get install mosquitto`
     

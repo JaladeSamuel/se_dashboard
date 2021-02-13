@@ -9,6 +9,10 @@ Make sure you have Rust installed in nightly:
 
 `rustup default nightly`
 
+  - Mosquitto (Broker MQTT) : 
+    ```sudo apt-get install mosquitto```
+    ```pip3 install paho-mqtt```
+
 Run the server:
 
 `cd dashboard-web`

@@ -17,8 +17,14 @@ Web server based dashboard to view in real time the values of simulated sensors 
 - Mosquitto and MQTT library:
  
 `sudo apt-get install mosquitto`
-    
+ 
+ If Mosquitto doesn't automatically launch, start it with: `systemctl start mosquitto`. You can check its status with: `systemctl status mosquitto`.
+ 
 `pip3 install paho-mqtt`
+
+- Required Python libraries:
+
+`pip3 install numpy`
 
 ## Run the server ✅
 

@@ -1,4 +1,4 @@
-# Sensors EveryWhere
+# Sensors EveryWhere 🚀
 
 Sensors EveryWhere project.
 
@@ -6,7 +6,7 @@ Sensors EveryWhere project.
 
 # Run the Rust web server
 
-## Dependencies 
+## Dependencies 🛠
 
 - Make sure you have Rust installed in nightly:
 
@@ -19,7 +19,7 @@ Sensors EveryWhere project.
     
     `pip3 install paho-mqtt`
 
-# Run the server:
+## Run the server: ✅
 
 `cd dashboard-web`
 
@@ -27,7 +27,7 @@ Sensors EveryWhere project.
 
 You can now open `localhost:8000` in your browser and you should have access to the dashboard!
 
-# Run all sensors and agregators
+# Run all sensors and agregators ✅
 
 Run all simulated local sensors with :
 `./start_all_sensors.sh`

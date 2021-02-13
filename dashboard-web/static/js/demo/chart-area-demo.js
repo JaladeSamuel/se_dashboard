@@ -2,6 +2,7 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+maxSize = 15;
 charts = {}
 
 function setCharts(agregatorName) {
@@ -375,10 +376,17 @@ function setCharts(agregatorName) {
 }
 
 function addData(chart, label, data) {
-  console.log(charts);
   charts[chart].data.labels.push(label);
+  if (charts[chart].data.labels.length > maxSize) {
+    charts[chart].data.labels.shift();
+  }
+  
   charts[chart].data.datasets.forEach((dataset) => {
     dataset.data.push(data);
+    if (dataset.data.length > maxSize) {
+      dataset.data.shift();
+    }
   });
+
   charts[chart].update();
 }

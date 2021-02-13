@@ -1,5 +1,8 @@
-# se_dashboard dev branch
-Sensors EveryWhere project
+# Sensors EveryWhere
+
+Sensors EveryWhere project.
+
+![](doc/SEW.gif)
 
 # Run the Rust web server
 
@@ -12,15 +15,17 @@ Sensors EveryWhere project
  `rustup default nightly`
 
   - Mosquitto (Broker MQTT) : 
-    ```sudo apt-get install mosquitto```
+    `sudo apt-get install mosquitto`
     
-    ```pip3 install paho-mqtt```
+    `pip3 install paho-mqtt`
 
 # Run the server:
 
 `cd dashboard-web`
 
 `cargo run`
+
+You can now open `localhost:8000` in your browser and you should have access to the dashboard!
 
 # Run all sensors and agregators
 

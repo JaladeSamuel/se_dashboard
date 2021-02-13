@@ -30,8 +30,8 @@ You can now open `localhost:8000` in your browser and you should have access to 
 
 ## Run all sensors and agregators ✅
 
-Run all simulated local sensors with: `./start_all_sensors.sh`
+Run all simulated local sensors with: `./start_all_sensors.sh`.
 
 Run all agregators with (gnome): `./start_all_agregators.sh`. You can also run the agregators one by one.
 
-The python sensors scripts are executed in background, you can stop them with: `sudo killall python3`
+The python sensors scripts are executed in background, you can stop them with: `sudo killall python3`.

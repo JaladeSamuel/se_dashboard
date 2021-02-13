@@ -347,7 +347,7 @@
             "/data_plouf/toulouse_agregator/anemo": "anemo",
         };
 
-        openMQTTConnection(topics, 'toulouse');
+        openMQTTConnection(topics, "toulouse");
     </script>
 
 </body>
